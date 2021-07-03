@@ -1,19 +1,16 @@
-import React, { Component } from 'react'
-import ProductItem from './ProductItem'
+import React, { Component } from 'react';
+import ProductItem from './ProductItem';
 
-export default class ProductList extends Component {
-
+class ProductList extends Component {
 
     renderProductItem = () => {
-        //this.props.productsData lấy từ ExerciseCarStoreComponent
+        // thuộc tính this.props.productsData lấy từ ExerciseCarStore
         return this.props.productsData.map((product, index) => {
             return <div className="col-3" key={index}>
-                <ProductItem item={product} />
+                <ProductItem xemChiTiet={this.props.xemChiTiet} item={product} />
             </div>
         })
     }
-
-
     render() {
         return (
             <div className="container">
@@ -21,6 +18,8 @@ export default class ProductList extends Component {
                     {this.renderProductItem()}
                 </div>
             </div>
-        )
+        );
     }
 }
+
+export default ProductList;

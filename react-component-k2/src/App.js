@@ -19,11 +19,11 @@ class App extends Component {
           <div className="productList col-8">
             <div className="tab-content" id="v-pills-tabContent">
               <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                Home
+                <ProductList arrProduct={dataJson} />
               </div>
               <div className="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="v-pills-shop-tab">Shop</div>
             </div>
-            <ProductList arrProduct={dataJson} />
+
           </div>
         </div>
       </div>

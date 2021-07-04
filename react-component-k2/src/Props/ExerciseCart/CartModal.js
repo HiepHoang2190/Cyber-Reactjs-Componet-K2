@@ -10,6 +10,7 @@ class Cart extends Component {
                 <td><img style={{ width: 35, height: 35 }} src={spGioHang.hinhAnh} alt={spGioHang.hinhAnh}></img></td>
                 <td>{spGioHang.tenSP}</td>
                 <td>{spGioHang.soLuong}</td>
+                <td>{spGioHang.donGia}</td>
                 <td>{spGioHang.donGia * spGioHang.soLuong}</td>
             </tr>
         })

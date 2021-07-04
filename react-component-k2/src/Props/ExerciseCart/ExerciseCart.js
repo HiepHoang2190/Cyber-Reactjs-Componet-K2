@@ -47,6 +47,39 @@ class ExerciseCart extends Component {
         })
     }
 
+    xoaGioHang = (maSP) => {
+        // Thực hiện tính năng xóa giỏ hàng
+        console.log(maSP);
+
+
+        let index = this.state.gioHang.findIndex(spGioHang => spGioHang.maSP === maSP);
+        if (index !== -1) {
+            this.state.gioHang.splice(index, 1);
+        }
+
+        this.setState({
+            gioHang: this.state.gioHang
+        })
+    }
+
+    tinhTongSoLuong = () => {
+        // Dùng for
+
+        /**
+         *  let tongSoLuong = 0;
+         for(let i= 0; i < this.state.soLuong.length; i++){
+             let spGioHang = this.state.gioHang[i];
+             tongSoLuong += spGioHang.soLuong;
+         }
+         return tongSoLuong;
+         */
+
+        // Dùng reduce
+        return this.state.gioHang.reduce((tongSoLuong, spGioHang, index) => {
+            return tongSoLuong += spGioHang.soLuong;
+        }, 0)
+    }
+
     render() {
 
         return (
@@ -54,10 +87,10 @@ class ExerciseCart extends Component {
                 <h3 className="text-center" >BÀI TẬP GIỎ HÀNG</h3>
                 <div className="text-right">
                     <span style={{ width: 17, cursor: 'pointer' }} data-toggle="modal" data-target="#modelId">
-                        <i className="fa fa-cart mr-5"><i class="fa fa-cart-arrow-down"></i>(0) Giỏ hàng</i>
+                        <i className="fa fa-cart mr-5"><i class="fa fa-cart-arrow-down"></i>({this.tinhTongSoLuong()}) Giỏ hàng</i>
                     </span>
                 </div>
-                <CartModal gioHang={this.state.gioHang} />
+                <CartModal xoaGioHang={this.xoaGioHang} gioHang={this.state.gioHang} />
                 <ProductListEXC themGioHang={this.themGioHang} />
             </div>
         );

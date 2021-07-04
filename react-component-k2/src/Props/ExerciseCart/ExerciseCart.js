@@ -80,6 +80,23 @@ class ExerciseCart extends Component {
         }, 0)
     }
 
+    tangGiamSoLuong = (maSP, number) => { // 1 tăng giảm -1
+        let gioHang = [...this.state.gioHang];
+        let index = gioHang.findIndex(spGioHang => spGioHang.maSP === maSP);
+        if (index != -1) {
+            if (gioHang[index].soLuong < 1 && number === -1) {
+                alert('Số lượng tối thiểu ít nhất là 1!');
+                return;
+            }
+            // Tìm ra spGioHang trong  giỏ hàng thứ index => tăng số lượng
+            gioHang[index].soLuong += number;
+        }
+
+        // render và gán lại giá trị state.gioHang
+        this.setState({
+            gioHang: gioHang
+        })
+    }
     render() {
 
         return (
@@ -90,7 +107,7 @@ class ExerciseCart extends Component {
                         <i className="fa fa-cart mr-5"><i class="fa fa-cart-arrow-down"></i>({this.tinhTongSoLuong()}) Giỏ hàng</i>
                     </span>
                 </div>
-                <CartModal xoaGioHang={this.xoaGioHang} gioHang={this.state.gioHang} />
+                <CartModal tangGiamSoLuong={this.tangGiamSoLuong} xoaGioHang={this.xoaGioHang} gioHang={this.state.gioHang} />
                 <ProductListEXC themGioHang={this.themGioHang} />
             </div>
         );

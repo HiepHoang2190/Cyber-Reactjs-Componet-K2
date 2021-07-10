@@ -38,6 +38,7 @@ class GioHangRedux extends Component {
                                             <td>{spGH.gia}</td>
                                             <td>{spGH.soLuong}</td>
                                             <td>{(spGH.soLuong * spGH.gia).toLocaleString()}</td>
+                                            <td><button className="btn btn-danger" onClick={() => { this.props.xoaGioHang(spGH.maSP) }}>Xóa</button></td>
                                         </tr>
                                     })}
                                 </tbody>
@@ -57,10 +58,27 @@ class GioHangRedux extends Component {
 
 // Hàm lấy state redux biến đổi thành props của component
 
-const mapStateToProps = state => {  //state là state tổng của ứng dụng chứa các state con (rootReducer)
+const mapStateToProps = (state) => {  //state là state tổng của ứng dụng chứa các state con (rootReducer)
     return {
         gioHang: state.stateGioHang.gioHang
     }
 }
 
-export default connect(mapStateToProps)(GioHangRedux)
+// Hàm đưa dữ liệu lên reducer
+const mapDispatchToProps = (dispatch) => {
+    return {
+        xoaGioHang: (maSP) => {
+            // Tạo action 
+            let action = {
+                type: 'XOA_GIO_HANG',
+                maSP
+            };
+
+            // Dùng phương thức dispatch redux cung cấp để đưa dữ liệu lên reudcer
+            // console.log(maSP);
+            dispatch(action);
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GioHangRedux)

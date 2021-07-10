@@ -20,12 +20,27 @@ const BaiTapGioHangReducer = (state = stateGioHang, action) => {
             // console.log('gioHang', state.gioHang);
             // có ... state để tạo state mới thì mới thay đổi giao diện, nếu ko dùng ... thì thay đổi giá trị nhưng giao diện vẫn ko binding
 
+            // Cập nhật lại state.gioHang
             state.gioHang = [...state.gioHang];
 
             return { ...state };
-        }
+        }; break;
+
+        case 'XOA_GIO_HANG': {
+            let gioHangCapNhat = [...state.gioHang];
+
+            // Tìm ra phần tử cần xóa dựa vào maSp
+            let index = gioHangCapNhat.findIndex(spGH => spGH.maSP === action.maSP);
+            if (index !== -1) {
+                gioHangCapNhat.splice(index, 1);
+            }
+            // Cập nhật lại state giỏ hàng mới để component render lại
+            state.gioHang = gioHangCapNhat;
+            return { ...state }
+        }; break;
+        default: return { ...state };
     }
-    return { ...state }
+
 }
 
 export default BaiTapGioHangReducer;

@@ -8,6 +8,7 @@ import Parent from './Props/Parent';
 import DanhSachSanPham from './Props/DanhSachSanPham'
 import ExerciseCart from './Props/ExerciseCart/ExerciseCart';
 import BaiTapGioHangRedux from './BaiTapGioHangRedux/BaiTapGioHangRedux';
+import BaiTapGameXucXac from './BaiTapRedux/BaiTapGameXucXac';
 // import DanhSachSanPham from './Props/DanhSachSanPham';
 class App extends Component {
 
@@ -15,7 +16,7 @@ class App extends Component {
 
     return (
       <div>
-        <BaiTapGioHangRedux />
+        <BaiTapGameXucXac />
       </div>
 
     );

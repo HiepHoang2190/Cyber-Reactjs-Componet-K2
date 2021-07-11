@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux'
+
+
 class ThongTinTroChoi extends Component {
+
     render() {
+        // console.log('taixiu', this.props.taiXiu);
         return (
             <div>
                 <div className="display-4">BẠN CHỌN:

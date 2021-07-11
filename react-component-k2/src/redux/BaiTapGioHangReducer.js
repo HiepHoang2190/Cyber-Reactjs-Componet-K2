@@ -6,6 +6,7 @@ const stateGioHang = {
 }
 
 const BaiTapGioHangReducer = (state = stateGioHang, action) => {
+    // console.log('giohang', action);
     switch (action.type) {
         case 'THEM_GIO_HANG': {
             let index = state.gioHang.findIndex(spGH => spGH.maSP === action.spGioHang.maSP);

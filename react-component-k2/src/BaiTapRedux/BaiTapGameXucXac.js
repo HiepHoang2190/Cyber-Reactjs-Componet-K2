@@ -1,40 +1,55 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import './BaiTapGameXucXac.css';
 import ThongTinTroChoi from './ThongTinTroChoi';
 import XucXac from './XucXac';
+import { connect } from 'react-redux'
 class BaiTapGameXucXac extends Component {
     render() {
         return (
             <div className="game">
                 <div className="title-game text-center mt-5 display-4">
-                    Game đổ xúc xắc
+                    Bài tập game xúc xắc
                 </div>
-                <div className="row text-center">
+
+                <div className="row text-center mt-5">
                     <div className="col-5">
-                        <button className="btnGame">Tài</button>
+                        <button onClick={() => {
+                            this.props.datCuoc(true);
+                        }} className="btnGame">TÀI</button>
                     </div>
                     <div className="col-2">
                         <XucXac />
                     </div>
                     <div className="col-5">
-                        <button className="btnGame">Xỉu</button>
+                        <button onClick={() => {
+                            this.props.datCuoc(false);
+                        }} className="btnGame">XỈU</button>
                     </div>
+
                 </div>
                 <div className="thongTinTroChoi text-center">
                     <ThongTinTroChoi />
                     <button className="btn btn-success p-2 display-4 mt-5">Play game</button>
                 </div>
             </div>
-        );
+        )
     }
 }
 
 
-const mapStateToProps = (state) => {
+
+
+const mapDispatchToProps = (dispatch) => {
     return {
-        soBanThang: state.BaiTapGameXucXacReducer.soBanThang
+        datCuoc: (taiXiu) => {
+            // Tạo action taixiu
+            let action = {
+                type: 'DAT_CUOC',
+                taiXiu
+            }
+            // gửi lên reducer
+            dispatch(action)
+        }
     }
 }
-
-export default connect(mapStateToProps)(BaiTapGameXucXac);
+export default connect(null, mapDispatchToProps)(BaiTapGameXucXac)

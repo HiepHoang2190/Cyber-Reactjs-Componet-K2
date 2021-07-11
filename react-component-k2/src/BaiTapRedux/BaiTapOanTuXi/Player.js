@@ -24,7 +24,7 @@ class Player extends Component {
 
 
                         return <div className="col-4">
-                            <button style={border} className="btnItem">
+                            <button style={border} className="btnItem" onClick={() => { this.props.datCuoc(item.ma) }}>
                                 <img width={50} height={50} src={item.hinhAnh} alt={item.hinhAnh} />
                             </button>
                         </div>
@@ -42,4 +42,14 @@ const mapStateToProps = (state) => {
         mangDatCuoc: state.BaiTapOanTuXiReducer.mangDatCuoc
     }
 }
-export default connect(mapStateToProps)(Player);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        datCuoc: (maCuoc) => {
+            dispatch({
+                type: 'CHON_KEO_BUA_BAO',
+                maCuoc
+            })
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Player);

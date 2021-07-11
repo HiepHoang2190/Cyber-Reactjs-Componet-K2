@@ -41,6 +41,7 @@ const BaiTapOanTuXiReducer = (state = stateDefault, action) => {
                 return { ...item, datCuoc: false }
             });
 
+            // setState cua mangCuoc => render lại giao diện
             // ===============================
             state.mangDatCuoc = mangCuocUpdate;
             return { ...state };
@@ -54,7 +55,50 @@ const BaiTapOanTuXiReducer = (state = stateDefault, action) => {
             state.computer = quanCuocNgauNhien;
             return { ...state };
         }
+        case 'END_GAME': {
 
+            let player = state.mangDatCuoc.find(item => item.datCuoc === true);
+            let computer = state.computer;
+
+            switch (player.ma) {
+                case 'keo':
+                    if (computer.ma === 'keo') {
+                        state.ketQua = 'hòa nhau !!!';
+                    } else if (computer.ma === 'bua') {
+                        state.ketQua = 'thua sml !!!';
+                    } else {
+                        state.soBanThang += 1;
+                        state.ketQua = "I'm iron man, i love you 3000 !!!";
+                    }
+                    ; break;
+                case 'bua':
+                    if (computer.ma === 'keo') {
+                        state.soBanThang += 1;
+                        state.ketQua = "I'm iron man, i love you 3000 !!!";
+                    } else if (computer.ma === 'bua') {
+                        state.ketQua = 'hòa nhau !!!';
+                    } else {
+                        state.ketQua = "thua sml !!!";
+                    }
+                    ; break;
+                case 'bao':
+                    if (computer.ma === 'keo') {
+                        state.ketQua = 'thua sml !!!';
+                    } else if (computer.ma === 'bua') {
+                        state.soBanThang += 1;
+                        state.ketQua = "I'm iron man, i love you 3000 !!!";
+                    } else {
+                        state.ketQua = 'hòa nhau !!!';
+                    }
+                    ; break;
+                default:
+                    state.soBanThang += 1;
+                    state.ketQua = "I'm iron man, i love you 3000 !!!"; break;
+
+            }
+        }
+            state.soBanChoi += 1;
+            return { ...state }
         default: return { ...state }
     }
 }

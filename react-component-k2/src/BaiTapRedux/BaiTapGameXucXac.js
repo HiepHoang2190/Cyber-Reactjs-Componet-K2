@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './BaiTapGameXucXac.css';
 import ThongTinTroChoi from './ThongTinTroChoi';
 import XucXac from './XucXac';
@@ -29,4 +30,11 @@ class BaiTapGameXucXac extends Component {
     }
 }
 
-export default BaiTapGameXucXac;
+
+const mapStateToProps = (state) => {
+    return {
+        soBanThang: state.BaiTapGameXucXacReducer.soBanThang
+    }
+}
+
+export default connect(mapStateToProps)(BaiTapGameXucXac);

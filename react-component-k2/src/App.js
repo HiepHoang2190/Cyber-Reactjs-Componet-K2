@@ -10,6 +10,7 @@ import ExerciseCart from './Props/ExerciseCart/ExerciseCart';
 import BaiTapGioHangRedux from './BaiTapGioHangRedux/BaiTapGioHangRedux';
 import BaiTapGameXucXac from './BaiTapRedux/BaiTapGameXucXac';
 import BaiTapOanTuXi from './BaiTapRedux/BaiTapOanTuXi/BaiTapOanTuXi';
+import BaiTapBookingTicket from './BaiTapRedux/BaiTapBookingTicket/BaiTapBookingTicket';
 // import DanhSachSanPham from './Props/DanhSachSanPham';
 class App extends Component {
 
@@ -17,7 +18,7 @@ class App extends Component {
 
     return (
       <div>
-        <BaiTapOanTuXi />
+        <BaiTapBookingTicket />
       </div>
 
     );

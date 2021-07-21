@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import './BaiTapBookingTicket.css';
 import ThongTinDatGhe from './ThongTinDatGhe';
+import danhSachGheData from '../../Data/danhSachGhe.json';
+import HangGhe from './HangGhe';
 class BaiTapBookingTicket extends Component {
+
+    renderHangGhe = () => {
+        return danhSachGheData.map((hangGhe, index) => {
+            return <div key={index} >
+                <HangGhe hangGhe={hangGhe} soHangGhe={index} />
+            </div>
+        })
+    }
     render() {
         return (
             <div className="bookingMovie" style={{ position: 'fixed', width: '100%', height: '100%', backgroundImage: "url('./img/bookingTicket/bgmovie.jpg')", backgroundSize: '100%' }}>
@@ -13,10 +23,12 @@ class BaiTapBookingTicket extends Component {
                                     ĐẶT VÉ XEM PHIM CYBER.VN
                               </div>
                                 <div className="mt-3 text-light" style={{ fontSize: '25px' }}>Màn Hình</div>
-                                <div className="mt-2" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                                <div className="mt-2" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 
                                     <div className="screen"></div>
+                                    {this.renderHangGhe()}
                                 </div>
+
                             </div>
                             <div className="col-4">
                                 <div style={{ fontSize: '35px' }} className="display-4 text-light mt-2" >DANH SÁCH GHẾ BẠN CHỌN</div>

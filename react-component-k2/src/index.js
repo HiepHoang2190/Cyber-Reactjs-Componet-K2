@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 //setup redux
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import rootReducer from './redux/rootReducer';
+import rootReducer from './redux/reducer/rootReducer';
 
 const store = createStore(rootReducer);
 // const store = createStore(rootReducer,

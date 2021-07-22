@@ -1,5 +1,3 @@
-import BaiTapGameXucXac from "../BaiTapRedux/BaiTapGameXucXac"
-import XucXac from "../BaiTapRedux/XucXac";
 
 
 const stateDefault = {

@@ -8,7 +8,7 @@ class ModelList extends Component {
         return (
             <ExModelListContext.Consumer>
                 {(value) => {
-                    console.log(value)
+                    // console.log(value)
                     return <div>
                         <h3>Danh sách Idol</h3>
                         <div className="row">

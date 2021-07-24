@@ -5,7 +5,7 @@ class ModelItem extends Component {
     render() {
 
         let { modelItem } = this.props
-        console.log(modelItem)
+        // console.log(modelItem)
         return (
             <ExModelListContext.Consumer>
                 {(value) => {

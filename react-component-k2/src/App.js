@@ -14,6 +14,7 @@ import BaiTapBookingTicket from './BaiTapRedux/BaiTapBookingTicket/BaiTapBooking
 import DemoPureComponent from './DemoPureComponent/DemoPureComponent';
 import ContextDemo from './ContextDemo/ContextDemo';
 import ExContextModelList from './ContextDemo/ExContextModelList/ExContextModelList';
+import BaiTapBurger from './Props/BaiTapBurger/BaiTapBurger';
 // import DanhSachSanPham from './Props/DanhSachSanPham';
 class App extends Component {
 
@@ -21,7 +22,7 @@ class App extends Component {
 
     return (
       <div>
-        <ExContextModelList />
+        <BaiTapBurger />
       </div>
 
     );

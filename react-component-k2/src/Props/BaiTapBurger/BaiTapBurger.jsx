@@ -41,6 +41,32 @@ class BaiTapBurger extends Component {
          */
 
     }
+
+    renderMenu = () => {
+        // Lấy props từ redux về
+        let { menu, burger } = this.props;
+        // console.log('menu', menu); 
+        console.log(Object.entries(menu));
+        //menuItem là các mảng con ở trong, nên ta bóc tách các mảng con này bằng cách viết như ở dưới
+        // return Object.entries(menu).map((menuItem,index)=> {
+        //     console.log(menuItem)
+        // })
+        return Object.entries(menu).map(([propsMenu, price], index) => {
+            console.log(propsMenu, price);
+            return (
+                <tr key={index}>
+                    <td>{propsMenu}</td>
+                    <td>
+                        <button className=" btn-success">+</button>
+                        {burger[propsMenu]}
+                        <button className=" btn-danger">-</button>
+                    </td>
+                    <td>{price}</td>
+                    <td>{burger[propsMenu] * price}</td>
+                </tr>
+            )
+        })
+    }
     render() {
         return (
             <div className="container">
@@ -55,6 +81,27 @@ class BaiTapBurger extends Component {
                         </div>
                     </div>
                     <div className="col-5">
+                        <table className="table">
+                            <h3 className="text-center text-success">
+                                Chọn thức ăn
+                            </h3>
+                            <thead>
+                                <tr>
+                                    <th>Thức ăn</th>
+                                    <th></th>
+                                    <th>Đơn giá</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                                {this.renderMenu()}
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <td colSpan="2"></td>
+                                    <td>Tổng cộng</td>
+                                    <td>{this.props.total}</td>
+                                </tr>
+                            </tfoot>
+                        </table>
 
                     </div>
                 </div>
@@ -65,7 +112,9 @@ class BaiTapBurger extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        burger: state.BurgerReducer.burger
+        burger: state.BurgerReducer.burger,
+        menu: state.BurgerReducer.menu,
+        total: state.BurgerReducer.total
     }
 }
 

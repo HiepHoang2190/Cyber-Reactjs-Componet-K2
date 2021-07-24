@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
-
+import { ExModelListContext } from '../_Context/ExModelListContext';
 class ModelItem extends Component {
-    render() {
-        return (
-            <div>
-                <div className="card  bg-default text-dark">
-                    <img className="card-img-top" src="./img/model/model1.png" alt />
-                    <div className="card-body">
-                        <h4 className="card-title">Họ Tên: Default</h4>
-                        <p className="card-text">Tuổi: 18</p>
-                        <button style={{ background: 'none', border: '1px solid red', borderRadius: '5px' }} className="card-text">8 <i style={{ color: 'red' }} className="fa fa-heart "></i></button>
-                    </div>
-                </div>
 
-            </div>
+    render() {
+
+        let { modelItem } = this.props
+        console.log(modelItem)
+        return (
+            <ExModelListContext.Consumer>
+                {(value) => {
+                    return <div>
+                        <div className="card  bg-default text-dark">
+                            <img className="card-img-top" src={modelItem.img} alt={modelItem.img} />
+                            <div className="card-body">
+                                <h4 className="card-title">Họ Tên: {modelItem.name}</h4>
+                                <p className="card-text">Tuổi: {modelItem.age}</p>
+                                <button onClick={() => value.setActiveModel(modelItem.id)} style={{ background: 'none', border: '1px solid red', borderRadius: '5px' }} className="card-text">{modelItem.like} <i style={{ color: 'red' }} className="fa fa-heart "></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                }}
+            </ExModelListContext.Consumer>
+
         );
     }
 }

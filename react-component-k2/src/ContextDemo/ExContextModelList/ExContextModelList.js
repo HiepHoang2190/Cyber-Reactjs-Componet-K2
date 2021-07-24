@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import ExModelListProvider from '../_Provider/ExModelListProvider';
 import ModelList from './ModelList';
 import ProfileModel from './ProfileModel';
 
 class ExContextModelList extends Component {
     render() {
         return (
-            <div className="container">
-                <ProfileModel />
+            <ExModelListProvider>
+                <div className="container">
+                    <ProfileModel />
 
-                <ModelList />
-            </div>
+                    <ModelList />
+                </div>
+            </ExModelListProvider>
         );
     }
 }

@@ -13,6 +13,7 @@ import BaiTapOanTuXi from './BaiTapRedux/BaiTapOanTuXi/BaiTapOanTuXi';
 import BaiTapBookingTicket from './BaiTapRedux/BaiTapBookingTicket/BaiTapBookingTicket';
 import DemoPureComponent from './DemoPureComponent/DemoPureComponent';
 import ContextDemo from './ContextDemo/ContextDemo';
+import ExContextModelList from './ContextDemo/ExContextModelList/ExContextModelList';
 // import DanhSachSanPham from './Props/DanhSachSanPham';
 class App extends Component {
 
@@ -20,7 +21,7 @@ class App extends Component {
 
     return (
       <div>
-        <ContextDemo />
+        <ExContextModelList />
       </div>
 
     );

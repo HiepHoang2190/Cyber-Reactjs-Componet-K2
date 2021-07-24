@@ -57,9 +57,9 @@ class BaiTapBurger extends Component {
                 <tr key={index}>
                     <td>{propsMenu}</td>
                     <td>
-                        <button className=" btn-success">+</button>
+                        <button onClick={() => { this.props.addBreadMid(propsMenu, 1) }} className=" btn-success">+</button>
                         {burger[propsMenu]}
-                        <button className=" btn-danger">-</button>
+                        <button onClick={() => { this.props.addBreadMid(propsMenu, -1) }} className=" btn-danger">-</button>
                     </td>
                     <td>{price}</td>
                     <td>{burger[propsMenu] * price}</td>
@@ -118,4 +118,17 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(BaiTapBurger)
+const mapDispatchToPros = (dispatch) => {
+    return {
+        addBreadMid: (propsBurger, amount) => {
+            // Tạo ra action
+            const action = {
+                type: 'ADD_BREADMID',
+                propsBurger,
+                amount
+            }
+            dispatch(action)
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToPros)(BaiTapBurger)
